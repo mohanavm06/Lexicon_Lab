@@ -42,7 +42,7 @@ classes implement the same method signature (`send()`).
 As long as every object in the list responds to the `.send()` method call, the loop 
 can treat them uniformly without needing to check their specific type or class.
 """
-# ==========================================
+
 # Part B - Polymorphism with inheritance
 # ==========================================
 # 1. Base class Document with title attribute and describe() method
