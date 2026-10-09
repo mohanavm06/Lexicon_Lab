@@ -46,28 +46,28 @@ SELECT first_name, city FROM customers
 WHERE city IN (SELECT city FROM customers GROUP BY city HAVING COUNT(*) > 1)
 ORDER BY city, first_name;  
 
-------------------------- BONUS QUESTIONS -------------------------
+-------------------------  QUESTIONS -------------------------
 
 
--- B1. Show products that are Clothing or Shoes and cost more than 1000 kr.
---     Hint: you need brackets. Try without them too: why is the answer different? (3 rows)
+--1. Show products that are Clothing or Shoes and cost more than 1000 kr.
+ (3 rows)
 SELECT * FROM products WHERE category IN ('Clothing', 'Shoes') AND price > 1000;
 SELECT * FROM products WHERE (category = 'Clothing' OR category = 'Shoes') AND price > 1000;
 -- Without brackets AND runs before OR, so the price check only applies to Shoes (7 rows).
 
 
--- B2. For every product in stock, show name, price, stock and the total value
---     of the stock (price x stock) as stock_value. Highest value first. (10 rows)
+--2. For every product in stock, show name, price, stock and the total value
+
 SELECT name, price, stock, price * stock AS stock_value
 FROM products 
 WHERE stock > 0 
 ORDER BY stock_value DESC;
 
--- B3. Which customers have a first name with exactly 4 letters?
---     Hint: _ in LIKE means "exactly one character". (4 rows)
+--3. Which customers have a first name with exactly 4 letters?
+
 SELECT * FROM customers WHERE first_name LIKE '____';
 
 
--- B4. Sort the products by price, cheapest first, and show only products number 6 to 10.
---     Hint: look up OFFSET. (5 rows)
+--4. Sort the products by price, cheapest first, and show only products number 6 to 10.
+
 SELECT * FROM products ORDER BY price LIMIT 5 OFFSET 5;
